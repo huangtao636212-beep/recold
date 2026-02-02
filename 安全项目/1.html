@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>1.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<style>
+img{
+    width: 60%;
+    padding-left: 0%;
+}
+</style>
+<h1 id="1-29-%E6%8C%87%E5%AF%BC%E4%B8%93%E5%AE%B6%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8C%87%E5%AF%BC">1-29 指导专家的第一次指导</h1>
+<h2 id="1-%E5%92%8C%E6%9D%AD%E5%93%A5%E7%9A%84%E4%BA%A4%E6%B5%81">1. 和杭哥的交流</h2>
+<p>1） 确定目标（要实现的功能）<br>
+2） 确定参数的安全范围参数（给个指标超过多少 延迟）</p>
+<h2 id="2-%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%80%9D%E8%B7%AF">2. 设计的思路</h2>
+<ul>
+<li>安全控制器的目标：类似PLC的电子模块，这个模块是用于机器人里的，模块的来源是机器人上的指标</li>
+<li>专家：把PLC当成一个黑盒，围绕这个把外围的东西说清楚； 然后再具体的架构上的描述 （然后再逐步拆解黑盒说明内部做了哪些工作 - 我们后边要做的事情）</li>
+<li>要点：前期需要有一个场景描述，从更高的Level去做描述</li>
+</ul>
+<h2 id="3-%E4%B8%93%E5%AE%B6%E8%B0%88%E8%AF%9D">3. 专家谈话</h2>
+<h4 id="31-%E5%9F%BA%E6%9C%AC%E6%8A%BD%E8%B1%A1">3.1 基本抽象</h4>
+<h5 id="1-%E5%AD%98%E5%9C%A8%E4%B8%A4%E7%A7%8D%E7%9A%84%E6%9D%90%E6%96%9913849-%E5%92%8C61508-%E6%88%91%E4%BB%AC%E5%BD%93%E5%89%8D%E4%BD%BF%E7%94%A8%E7%9A%84%E6%98%AF13849-%E6%8C%89%E7%9D%80%E4%B8%80%E4%BB%BD%E8%B5%84%E6%96%99%E8%BF%9B%E8%A1%8C%E5%B0%B1%E5%8F%AF-%E5%90%84%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84%E6%A1%86%E6%9E%B6%E5%9F%BA%E6%9C%AC%E4%B8%80%E8%87%B4">(1) 存在两种的材料13849 和61508 我们当前使用的是13849  按着一份资料进行就可 各个版本的框架基本一致</h5>
+<p><img src="../image/每日目标/image.png" alt="13849">
+<img src="../image/每日目标/image-1.png" alt="61508"></p>
+<h5 id="2-%E9%9C%80%E8%A6%81%E5%8A%9F%E8%83%BD%E6%80%BB%E7%9B%91-%E5%8D%8F%E8%B0%83%E7%A0%94%E5%8F%91%E8%B5%84%E6%BA%90--%E7%90%86%E8%A7%A3%E6%AF%8F%E4%B8%AA%E6%96%87%E6%A1%A3%E7%9A%84%E7%9B%AE%E7%9A%84%E5%86%8D%E6%8B%86%E5%88%86%E5%88%B0%E5%90%84%E7%AB%A0%E8%8A%82%E5%BA%94%E8%AF%A5%E5%8C%85%E5%90%AB%E7%9A%84%E5%86%85%E5%AE%B9%E9%81%B5%E5%BE%AA%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E7%9A%84%E9%80%BB%E8%BE%91">(2) 需要功能总监 协调研发资源 / 理解每个文档的目的，再拆分到各章节应该包含的内容（遵循自上而下的逻辑）</h5>
+<h5 id="3-%E7%9B%AE%E5%89%8D%E7%9A%84%E5%BB%BA%E8%AE%AE%E9%83%BD%E6%98%AF%E4%B8%8D%E6%B6%89%E5%8F%8A%E6%8A%80%E6%9C%AF%E5%B1%82%E9%9D%A2-%E5%8F%AA%E6%98%AF%E9%92%88%E5%AF%B9%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99%E6%96%B9%E5%BC%8F---%E5%BA%94%E7%AA%81%E5%87%BA%E7%9A%84%E5%86%85%E5%AE%B9%E6%94%BE%E7%BD%AE%E7%9A%84%E7%AB%A0%E8%8A%82%E4%BB%A5%E5%8F%8A%E8%A6%81%E8%A1%A5%E5%85%85%E7%9A%84%E9%83%A8%E5%88%86">(3) 目前的建议都是不涉及技术层面 只是针对文档编写方式 - 应突出的内容、放置的章节以及要补充的部分</h5>
+<h5 id="4-%E5%BA%94%E7%94%A8%E5%B1%82%E9%9D%A2%E9%9C%80%E6%B1%82%E4%BB%8E%E5%9C%BA%E6%99%AF%E5%87%BA%E5%8F%91%E5%B0%86%E5%8A%9F%E8%83%BD%E6%8F%8F%E8%BF%B0%E6%B8%85%E6%A5%9A%E4%B8%BA%E4%BD%95%E8%BF%99%E6%A0%B7%E5%81%9A%E5%AE%A1%E6%A0%B8%E6%9C%BA%E6%9E%84%E9%9D%A2%E5%AF%B9%E7%9A%84%E5%85%B7%E4%BD%93%E5%9C%BA%E6%99%AF">(4) 应用层面需求从场景出发，将功能描述清楚（为何这样做/审核机构面对的具体场景）</h5>
+<h5 id="5-cra%E7%BD%91%E7%BB%9C%E5%BC%B9%E6%80%A7%E6%B3%95%E6%A1%88%E6%95%B4%E8%BD%A6%E7%9A%84%E5%88%86%E6%9E%90%E5%A6%82%E6%9E%9C%E5%8F%AF%E8%83%BD%E6%94%B6%E5%88%B0%E6%94%BB%E5%87%BB%E5%B0%B1%E8%A6%81%E6%9C%89%E8%BF%99%E4%B8%AA-%E7%84%B6%E5%90%8E%E6%89%8D%E8%BF%9B%E8%A1%8C%E5%86%85%E9%83%A8%E6%A8%A1%E5%9D%97%E7%9A%84%E5%88%86%E6%9E%90%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E5%88%86%E6%9E%90">(5) CRA网络弹性法案：整车的分析如果可能收到攻击，就要有这个， 然后才进行内部模块的分析控制器的分析</h5>
+<h4 id="32-%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3">3.2 软件相关</h4>
+<h5 id="1-%E6%9C%8D%E5%8A%A1%E8%8C%83%E5%9B%B4">(1) 服务范围</h5>
+<ul>
+<li>业务范围：包含法规和标准的合规、咨询以及工程服务；</li>
+<li>测试方面：围绕信息安全 、网络安全提供测试服务</li>
+<li>软件方面：以代理形式合作：包括静态代码扫描、规则类工具SCA软件成分分析</li>
+<li>看组织角色有无确实 》》 <strong>合理的流程才能做出好的产品</strong>（项目经理，质量工程师，配置工程师，软硬件工程师）</li>
+<li>静态分析的工具包含在服务内部</li>
+<li>SCA ：代码质检员：提前抓Bug、卡MISRA-C等的编码规范、提高安全可靠性、减少返工、形成证据链（每次扫描结果可追溯）</li>
+</ul>
+<h5 id="2-%E6%B5%B7%E5%BA%B7%E4%B8%BE%E4%BE%8B">(2) 海康举例</h5>
+<ul>
+<li>1个责任表格，1个技术措施选择</li>
+</ul>
+<p><img src="../image/1/企业微信截图_17697517008185.png" alt="alt text">
+<img src="../image/1/企业微信截图_17697518235284.png" alt="alt text"></p>
+<h5 id="3-%E5%86%99%E4%BB%A3%E7%A0%81%E8%A6%81%E6%8C%89%E7%85%A7misra%E7%9A%84%E6%A0%87%E5%87%86%E6%9D%A5%E5%86%99%E4%B9%8B%E5%90%8E%E5%81%9A%E9%9D%99%E6%80%81%E6%89%AB%E6%8F%8F-%E7%BB%99%E5%87%BA%E6%8A%A5%E5%91%8A-%E9%87%8D%E8%A6%81%E7%9A%84%E6%98%AF%E7%BB%99%E5%87%BA%E6%8A%A5%E5%91%8A13849%E7%9A%8409%E6%96%87%E6%A1%A3%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A">(3) 写代码要按照MISRA的标准来写，之后做静态扫描 给出报告 <strong>（重要的是给出报告）</strong>(13849的09文档代码分析报告)</h5>
+<ul>
+<li>Reference:(1) xx使用指南.doc (2) xx编码规范.doc{前两个是我们内部规定的} (3) MISRA C 2012 Guidelines for the use of the ...</li>
+</ul>
+<h5 id="4-%E9%97%AE%E9%A2%98%E5%9B%9E%E7%AD%94">(4) 问题回答</h5>
+<ul>
+<li>版本冻结：再软件安全计划内有软件配置管理 》》提前有个计划 &lt;==&gt;测试最终报告  两者要能够匹配起来</li>
+<li>编译器的要求：要符合61508的标准编译器，我们使用的ARM是都通过了61508的</li>
+<li>不关注你中间的程序函数，关键的是你的功能级别来说明符合工程安全设计</li>
+<li>软件的差异化：这些要根据最终算出来的分数能不能达到安全等级来考虑</li>
+<li>安全分级：根据实际场景去划分安全等级</li>
+<li>（硬）冗余的一个坏了：场景安全 但是功能没完成  》》 我的理解是要满足SIL3的安全等级的同时还要考虑PLe的性能等级</li>
+<li>（拓）升级功能：需要考虑降级，防止别人通过降级的漏洞 反降级（OGP）</li>
+</ul>
+
+</body>
+</html>
